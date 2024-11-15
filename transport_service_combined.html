@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transportation & Delivery Services</title>
+    <style>
+    
+/* تنسيق الصفحة */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.page-section {
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input, form select, form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+    </style>
+</head>
+<body>
+    <!-- الصفحة الرئيسية -->
+    <header class="main-header">
+        <h1>Welcome to Transport & Delivery Services</h1>
+        <nav>
+            <ul>
+                <li><a href="#driver-page">Driver Page</a></li>
+                <li><a href="#user-page">User Page</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- صفحة السائق -->
+        <section id="driver-page" class="page-section">
+            <h2>Driver Page</h2>
+            <form id="driver-form">
+                <label for="driver-name">Full Name:</label>
+                <input type="text" id="driver-name" name="driver-name" required>
+
+                <label for="driver-license">License Number:</label>
+                <input type="text" id="driver-license" name="driver-license" required>
+
+                <label for="vehicle-info">Vehicle Info:</label>
+                <input type="text" id="vehicle-info" name="vehicle-info" required>
+
+                <button type="submit">Register</button>
+            </form>
+
+            <div id="driver-dashboard">
+                <h3>Available Orders</h3>
+                <ul id="driver-orders-list">
+                    <!-- الطلبات تظهر هنا عبر JavaScript -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- صفحة طالب الخدمة -->
+        <section id="user-page" class="page-section">
+            <h2>User Page</h2>
+            <form id="user-form">
+                <label for="service-type">Service Type:</label>
+                <select id="service-type" name="service-type" required>
+                    <option value="transport">Transport</option>
+                    <option value="delivery">Delivery</option>
+                </select>
+
+                <label for="pickup-location">Pickup Location:</label>
+                <input type="text" id="pickup-location" name="pickup-location" required>
+
+                <label for="dropoff-location">Dropoff Location:</label>
+                <input type="text" id="dropoff-location" name="dropoff-location" required>
+
+                <button type="submit">Submit Request</button>
+            </form>
+
+            <div id="user-dashboard">
+                <h3>Your Requests</h3>
+                <ul id="user-requests-list">
+                    <!-- الطلبات تظهر هنا عبر JavaScript -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- صفحة التواصل -->
+        <section id="contact" class="page-section">
+            <h2>Contact Us</h2>
+            <p>If you need help, please contact us at support@example.com or call +123 456 7890.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Transport & Delivery Services</p>
+    </footer>
+
+    <script>
+    
+// إضافة طلبات السائق
+const driverForm = document.getElementById("driver-form");
+const driverOrdersList = document.getElementById("driver-orders-list");
+
+driverForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const driverName = document.getElementById("driver-name").value;
+
+    const orderItem = document.createElement("li");
+    orderItem.textContent = `${driverName} is ready for orders.`;
+    driverOrdersList.appendChild(orderItem);
+
+    driverForm.reset();
+});
+
+// إضافة طلبات طالب الخدمة
+const userForm = document.getElementById("user-form");
+const userRequestsList = document.getElementById("user-requests-list");
+
+userForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const serviceType = document.getElementById("service-type").value;
+    const pickupLocation = document.getElementById("pickup-location").value;
+    const dropoffLocation = document.getElementById("dropoff-location").value;
+
+    const requestItem = document.createElement("li");
+    requestItem.textContent = `Service: ${serviceType}, From: ${pickupLocation}, To: ${dropoffLocation}`;
+    userRequestsList.appendChild(requestItem);
+
+    userForm.reset();
+});
+
+    </script>
+</body>
+</html>
